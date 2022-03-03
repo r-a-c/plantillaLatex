@@ -1,0 +1,124 @@
+\documentclass[12pt,english,spanish,noprefix,refpage]{book}
+\usepackage{xcolor}
+%\usepackage[onehalfspacing]{setspace}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{nicematrix}
+\usepackage{setspace}
+\usepackage{babel}
+\usepackage{graphics}
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{adjustbox,lipsum}
+\fancyhf{}
+\pagestyle{fancy}
+\newcommand{\mychangefont}{%
+	\fontsize{8}{10}\selectfont
+}
+\fancyhead[LE,RO]{\mychangefont \thepage}
+\fancyhead[RE,LO]{\mychangefont \leftmark}
+
+
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+\addto\captionsenglish{\renewcommand{\chaptername}{Capítulo}}
+
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+
+
+\usepackage[tablename=Tabla,figurename=Imagen]{caption}
+
+
+\usepackage{listings}
+\addto\captionsenglish{\renewcommand{\lstlistingname}{Código}}
+\addto\captionsspanish{\renewcommand{\lstlistingname}{Código}}
+
+\usepackage{listingsutf8}
+\lstset{inputencoding=utf8/latin1}
+\lstset{inputpath=files/}
+\lstset{breaklines=true,basicstyle=\footnotesize}
+\usepackage{graphicx} %Necesario para el siguiente comando
+\graphicspath{ {./images/} }
+\usepackage{multirow}
+\usepackage{siunitx}
+\sisetup{
+	round-mode          = places, % Redondea números
+	round-precision     = 2, % a 2 lugares
+}
+
+
+\usepackage[sorting=none,backend=biber]{biblatex}
+\addbibresource{biblio.bib}
+\nocite{*}
+\renewcommand{\bibname}{Bibliografía}
+
+\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
+\newcommand{\mytoday}{\the\year-\leadingzero{\month}-\leadingzero{\day}}
+\DeclareFieldFormat{urldate}{Último acceso en #1}
+
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map[overwrite=true]{
+			\pertype{online}
+			\step[fieldset=urldate,fieldvalue={\mytoday} ]
+		}
+	}
+}
+\usepackage[T1]{fontenc}
+\usepackage{hyphenat}
+\hyphenation{Ca-ta-lo-gue-DB gra-nu-la-ri-dad exis-ta mí-ni-mo prio-ri-dad má-xi-mo ca-rac-te-ri-za-ción mo-de-los de-sa-rro-lla-do-res des-cri-to orien-ta-ción pro-pues-tos ca-rac-te-rís-ti-cas des-a-co-pla-mien-to u-san-do mo-der-nas ge-ne-ral-men-te res-pues-ta do-cu-men-ta-ción pla-ni-fi-ca-dor co-rrec-ta-men-te des-plie-gue vir-tua-li-za-ción sto-ra-ge va-rios con-si-de-ra-ción he-rra-mien-ta con-ti-nua-ción mo-de-lo ME-TRI-CA MÉ-TRI-CA cum-pli-mien-to ta-reas per-so-na-les}
+
+\usepackage{verbatim}
+
+\usepackage{nomencl}
+\makenomenclature
+
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+	%	\nomenclature{$POR$}{ }
+
+
+	\include{cubiertap}\thispagestyle{empty}
+	%	\include{primerapagina}\thispagestyle{empty}
+	%	\include{preambulo}\thispagestyle{empty}
+
+	\cleardoublepage{}
+	\renewcommand{\contentsname}{Índice}
+	\tableofcontents{}
+	\cleardoublepage{}
+	%\renewcommand{\listfigurename}{Índice de imágenes}
+	%\listoffigures
+	%	\renewcommand{\listtablename}{Índice de tablas}
+	%	\listoftables
+	%\renewcommand{\lstlistlistingname}{Índice de código y algoritmos}
+	%\lstlistoflistings
+	%	\renewcommand{\nomname}{Abreviaturas}
+	%	\printnomenclature
+	%\cleardoublepage{}
+
+
+
+	\include{contenido}\thispagestyle{empty}
+%	\include{pregunta2}\thispagestyle{empty}
+%	\include{pregunta3}\thispagestyle{empty}
+%	\include{pregunta4}\thispagestyle{empty}
+
+	\renewcommand{\appendixname}{Apéndice}
+	\appendix
+	\cleardoublepage{}
+	\include{apendice}
+
+
+
+
+
+	\printbibliography[heading=bibintoc,title={Bibliografía}]
+	\newpage\null\thispagestyle{empty}\newpage
+
+	%\include{huevo}\thispagestyle{empty}
+\end{document}
